@@ -3,10 +3,10 @@
 
 ![plot](images/top-level.png)
 
-Future enchancments:
+Future enhancements:
 
 - [ ] Replace nXOR kernel with fix-point unsigned arithmetic dot-product
-- [ ] Update convolution mechanism. It's not necessary to catch all window simultaneously. Instead, window can be processed column-by-colum in a FIR manner. This will make implementation of convolution DSP48-friendly
+- [ ] Update convolution mechanism. It's not necessary to catch the whole window at the same time. Instead, window can be processed column-by-colum in a FIR manner. This will make implementation of convolution DSP48-friendly
 
 
 # Simulation & Verification
@@ -19,9 +19,9 @@ Cocotb simulation was used to generate input stimulus and assert output values
  
 `Makefile` contains all the required configurations to run simulation
 Run `make` and cocotb will run simulation via VPI interface to verilated binaries
-See the end of this example for example log
+See the end of this file for example log
 
-Future enchancments:
+Future enhancements:
 
 - [ ] Break common test to Testbench and various test-cases
 - [ ] Chance input-output interface to packed-streaming 
@@ -29,12 +29,12 @@ Future enchancments:
 
 # Window Buffer 2D
 
-There 2 version of window buffer mechanims are presented now
+There are 2 versions of window buffer mechanim presented now
 
 - Use version 1 in case of relatively small `N,K,BDW` (initial case)
 - use version 2 for large image processing (better for extended versions)
 
-Future enchancments:
+Future enhancements:
 - [ ] Utilize BRAM for data storage
 - [ ] Implement "classic" 2D convolution Kernel
 
@@ -44,12 +44,12 @@ Future enchancments:
 - Design has constant logic complexity of the critical path (multiplexor 2 to 1)
 
 **Drawback**
-- Because of the mesh (or 2D grid) structure, where each element has two inputs, this design is not suitable for SRL or BRAM, resource efficient, memory storage
+- Because of the mesh (or 2D grid) structure, where each element has two inputs, this design is not suitable for SRL or BRAM, resource efficient memory storage
 
 
 ### Version 2. SRL-Friendly
 **Benefits**
-- Feasable for SRL implementation, (N-K)*K registers can be fitted to SRL or BRAM (in future)
+- Feasable for SRL implementation, (N-K)*K registers can be fitted to SRL or BRAM (in the future)
 
 **Drawback**
 - Data-input (1 to K) demultiplexor and output multiplexors  (K to 1)  may affect critical path in case of large K (> 32)
@@ -62,13 +62,13 @@ Future enchancments:
 
 
 ## Window Mechanism validation
-Window mechanism verification with binary values may be obscured, so to simplify window-logic validation, 
 
+Window mechanism validation with binary values may be obscured, so to simplify window-logic validation:
 
 - Extend bit-width parameter `BWD` to `8`
 - Use incrementing counter value to represent indexes as values
 
-See waveform wxample with  `N_IMAGE=5, BWD=8, K_KERNEL=3` 
+See waveform example with  `N_IMAGE=5, BWD=8, K_KERNEL=3` 
 ```
 Image values
 
