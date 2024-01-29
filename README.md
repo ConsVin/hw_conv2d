@@ -56,8 +56,11 @@ Future enhancements:
 
 <details>
   <summary>Click me to see images</summary>
+ 
 ![plot](images/buffer_v1.png)
+
 ![plot](images/buffer_v2.png)
+
 </details>
 
 
